@@ -27,9 +27,6 @@ const createTask = async (req, res) => {
 const deleteTask = async (req, res) => {
     let task = false;
     try {
-      if (req.body.complete) {
-        req.body.completed = true;
-      }
       task = await Task.findById(req.params.id);
       await Task.findByIdAndDelete(req.params.id, req.body, {
         runValidators: true,
